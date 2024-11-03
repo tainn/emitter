@@ -1,0 +1,46 @@
+[project]
+name = "recp"
+version = "0.1.0"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["uv", "ruff"]
+
+[tool.ruff]
+fix = true
+indent-width = 4
+line-length = 120
+src = ["src"]
+
+[tool.ruff.lint]
+select = [
+  "F",
+  "E",
+  "W",
+  "I",
+  "N",
+  "UP",
+  "ANN",
+  "B",
+  "A",
+  "ICN",
+  "PIE",
+  "Q",
+  "RSE",
+  "RET",
+  "SIM",
+  "ARG",
+  "PTH",
+]
+ignore = ["ANN101"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["src"]
+
+[tool.ruff.format]
+preview = true
+indent-style = "space"
+line-ending = "lf"
+quote-style = "double"
+skip-magic-trailing-comma = false
+docstring-code-format = true

@@ -1,0 +1,17 @@
+services:
+  recp:
+    build:
+      context: .
+    image: recp:0.1.0
+    container_name: recp
+    restart: unless-stopped
+    networks:
+      - misc
+    labels:
+      - "type=app"
+    command: [ "uv", "run", "/app/src/main.py" ]
+
+networks:
+  misc:
+    name: misc
+    driver: bridge
