@@ -1,3 +1,3 @@
-# recp
+# emitter
 
-repeated empty commit pusher
+emits empty commit pushes
