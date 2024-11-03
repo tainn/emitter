@@ -32,12 +32,13 @@ def init() -> None:
     sp.run(f"git config --local user.email '{os.getenv("RECP_USER_EMAIL")}'", shell=True)
 
     sp.run(f"git remote add origin '{os.getenv("RECP_REPO_AUTH_URL")}'", shell=True)
+    sp.run(f"git checkout -b '{os.getenv("RECP_BRANCH")}'", shell=True)
 
 
 def repeat() -> None:
-    sp.run(f"git pull origin {os.getenv("RECP_BRANCH")}", shell=True)
+    sp.run(f"git pull origin '{os.getenv("RECP_BRANCH")}'", shell=True)
     sp.run("git commit --allow-empty -m 'echo'", shell=True)
-    sp.run(f"git push origin {os.getenv("RECP_BRANCH")}", shell=True)
+    sp.run(f"git push origin '{os.getenv("RECP_BRANCH")}'", shell=True)
 
 
 if __name__ == "__main__":
