@@ -9,10 +9,14 @@ def main() -> None:
     init()
 
     while True:
-        # monday=0 -> sunday=6
+        # monday: 0, sunday: 6
         if str(datetime.now().weekday()) not in os.getenv("RECP_SKIP_DAYS"):
             repeat()
+            print(f"pushed at {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}")
+        else:
+            print(f"skipped {datetime.now().strftime("%A").lower()} at {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}")
 
+        print(f"sleeping for {os.getenv("RECP_SLEEP_SECS")} secs at {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}")
         time.sleep(int(os.getenv("RECP_SLEEP_SECS")))
 
 
