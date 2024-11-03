@@ -1,12 +1,12 @@
 services:
-  recp:
+  emitter:
     build:
       context: .
-    image: recp:0.1.0
-    container_name: recp
+    image: emitter:0.1.0
+    container_name: emitter
     restart: unless-stopped
     networks:
-      - misc
+      - git
     env_file:
       - .env
     labels:
@@ -14,6 +14,6 @@ services:
     command: [ "uv", "run", "/app/src/main.py" ]
 
 networks:
-  misc:
-    name: misc
+  git:
+    name: git
     driver: bridge
