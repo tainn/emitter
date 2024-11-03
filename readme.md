@@ -1,3 +1,3 @@
 # emitter
 
-emits empty commit pushes
+emits empty commits
