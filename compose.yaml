@@ -6,7 +6,7 @@ services:
     container_name: emitter
     restart: unless-stopped
     networks:
-      - git
+      - ffa
     env_file:
       - .env
     labels:
@@ -14,6 +14,5 @@ services:
     command: [ "uv", "run", "/app/src/main.py" ]
 
 networks:
-  git:
-    name: git
-    driver: bridge
+  ffa:
+    external: true
