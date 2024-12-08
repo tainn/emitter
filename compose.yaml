@@ -2,7 +2,7 @@ services:
   emitter:
     build:
       context: .
-    image: emitter:0.1.0
+    image: emitter:0.1.1
     container_name: emitter
     restart: unless-stopped
     networks:
