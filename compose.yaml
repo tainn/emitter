@@ -10,7 +10,7 @@ services:
     env_file:
       - .env
     labels:
-      - "type=app"
+      - "tainn.type=app"
     command: [ "uv", "run", "/app/src/main.py" ]
 
 networks:
