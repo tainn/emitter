@@ -6,13 +6,13 @@ services:
     container_name: emitter
     restart: unless-stopped
     networks:
-      - ffa
+      - int
     env_file:
       - .env
     labels:
       - "tainn.type=app"
-    command: [ "uv", "run", "/app/src/main.py" ]
+    entrypoint: [ "uv", "run", "/app/src/main.py" ]
 
 networks:
-  ffa:
+  int:
     external: true
