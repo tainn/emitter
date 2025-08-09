@@ -28,7 +28,7 @@ select = [
   "RET",
   "SIM",
   "ARG",
-  "PTH",
+  "PTH"
 ]
 
 [tool.ruff.lint.isort]
