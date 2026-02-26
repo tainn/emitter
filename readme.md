@@ -1,3 +1,3 @@
 # emitter
 
-emitter of empty commits
+Emitter of `echo` commits
