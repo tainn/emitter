@@ -1,16 +1,17 @@
 services:
   emitter:
     build:
-      context: .
-    image: emitter:0.1.4
-    container_name: emitter
-    restart: unless-stopped
+      context: "."
+      dockerfile: "Containerfile"
+    image: "emitter:0.1.5"
+    container_name: "emitter"
+    restart: "unless-stopped"
     networks:
-      - int
+      - "emitter"
     env_file:
-      - .env
+      - ".env"
     entrypoint: [ "uv", "run", "/app/src/main.py" ]
 
 networks:
-  int:
+  emitter:
     external: true
