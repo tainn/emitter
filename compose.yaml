@@ -3,7 +3,7 @@ services:
     build:
       context: "."
       dockerfile: "Containerfile"
-    image: "emitter:0.1.5"
+    image: "emitter:${VERSION}"
     container_name: "emitter"
     restart: "unless-stopped"
     networks:
