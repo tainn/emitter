@@ -10,7 +10,7 @@ services:
       - "emitter"
     env_file:
       - ".env"
-    entrypoint: [ "uv", "run", "/app/src/main.py" ]
+    entrypoint: [ "/app/emitter" ]
 
 networks:
   emitter:
