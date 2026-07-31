@@ -1,5 +1,5 @@
-alias f := fix
 alias u := upgrade
+alias f := fix
 alias c0 := container-prune
 alias cu := container-up
 alias ctu := container-tag-up
