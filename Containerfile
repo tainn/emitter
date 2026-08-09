@@ -15,7 +15,7 @@ RUN \
 
 FROM quay.io/fedora/fedora-minimal:44
 RUN \
-  microdnf install -y --nodocs --setopt install_weak_deps=0 git && \
-  microdnf clean all -y
+  dnf install -y --nodocs --setopt install_weak_deps=0 git && \
+  dnf clean all
 WORKDIR /app
 COPY --from=build /build/emitter /app/emitter
