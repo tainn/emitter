@@ -10,7 +10,6 @@ services:
       - "emitter"
     env_file:
       - ".env"
-    entrypoint: [ "/app/emitter" ]
 
 networks:
   emitter:
