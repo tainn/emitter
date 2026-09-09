@@ -11,6 +11,7 @@ struct Config {
     repo_name: String,
     user_name: String,
     user_email: String,
+    signing_key: String,
     gpg: String,
     repo_auth_url: String,
     branch: String,
@@ -36,6 +37,7 @@ impl Config {
             repo_name: get("REPO_NAME")?,
             user_name: get("USER_NAME")?,
             user_email: get("USER_EMAIL")?,
+            signing_key: get("SIGNING_KEY")?,
             gpg: get("GPG")?,
             repo_auth_url: get("REPO_AUTH_URL")?,
             branch: get("BRANCH")?,
@@ -60,6 +62,7 @@ fn init(config: &Config) -> Result<(), Box<dyn std::error::Error>> {
     run_git(&["init"])?;
     run_git(&["config", "--local", "user.name", &config.user_name])?;
     run_git(&["config", "--local", "user.email", &config.user_email])?;
+    run_git(&["config", "--local", "user.signingkey", &config.signing_key])?;
     run_git(&["config", "--local", "commit.gpgsign", &config.gpg])?;
 
     if let Err(e) = run_git(&["remote", "add", "origin", &config.repo_auth_url]) {
