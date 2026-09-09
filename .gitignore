@@ -13,3 +13,6 @@ target
 secret.keys.asc
 public.keys.asc
 ownertrust.txt
+
+# ssh
+id_ed25519
