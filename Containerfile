@@ -9,7 +9,7 @@ RUN dnf install -y --nodocs --setopt install_weak_deps=0 git gnupg2 && dnf clean
 WORKDIR /app
 COPY --from=build /build/target/release/emitter /app/emitter
 COPY secret.keys.asc public.keys.asc ownertrust.txt /app/
-COPY id_ed25519 ~/.ssh/id_ed25519
-RUN gpg --batch --import secret.keys.asc public.keys.asc && gpg --batch --import-ownertrust < ownertrust.txt && gpgconf --kill all && rm -f ~/.gnupg/*.lock
-RUN chmod 700 ~/.ssh/ && chmod 600 ~/.ssh/*
+COPY id_ed25519 /root/.ssh/id_ed25519
+RUN gpg --batch --import secret.keys.asc public.keys.asc && gpg --batch --import-ownertrust < ownertrust.txt && gpgconf --kill all && rm -f /root/.gnupg/*.lock
+RUN chmod 700 /root/.ssh/ && chmod 600 /root/.ssh/*
 ENTRYPOINT [ "/app/emitter" ]
