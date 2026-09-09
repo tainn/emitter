@@ -11,4 +11,5 @@ COPY --from=build /build/target/release/emitter /app/emitter
 COPY secret.keys.asc public.keys.asc ownertrust.txt /app/
 COPY id_ed25519 ~/.ssh/id_ed25519
 RUN gpg --batch --import secret.keys.asc public.keys.asc && gpg --batch --import-ownertrust < ownertrust.txt && gpgconf --kill all && rm -f ~/.gnupg/*.lock
+RUN chmod 700 ~/.ssh/ && chmod 600 ~/.ssh/*
 ENTRYPOINT [ "/app/emitter" ]
