@@ -8,3 +8,8 @@ target
 
 # runtime
 .env
+
+# gpg
+secret.keys.asc
+public.keys.asc
+ownertrust.txt

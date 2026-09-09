@@ -5,7 +5,10 @@ COPY src /build/src
 RUN cargo build --release
 
 FROM quay.io/fedora/fedora-minimal:44
-RUN dnf install -y --nodocs --setopt install_weak_deps=0 git && dnf clean all
+RUN dnf install -y --nodocs --setopt install_weak_deps=0 git gnupg2 && dnf clean all
 WORKDIR /app
 COPY --from=build /build/target/release/emitter /app/emitter
+COPY secret.keys.asc public.keys.asc ownertrust.txt /app/
+RUN gpg --import secret.keys.asc public.keys.asc
+RUN gpg --import-ownertrust < ownertrust.txt
 ENTRYPOINT [ "/app/emitter" ]
