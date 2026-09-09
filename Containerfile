@@ -9,6 +9,5 @@ RUN dnf install -y --nodocs --setopt install_weak_deps=0 git gnupg2 && dnf clean
 WORKDIR /app
 COPY --from=build /build/target/release/emitter /app/emitter
 COPY secret.keys.asc public.keys.asc ownertrust.txt /app/
-RUN gpg --import secret.keys.asc public.keys.asc
-RUN gpg --import-ownertrust < ownertrust.txt
+RUN gpg --batch --import secret.keys.asc public.keys.asc && gpg --batch --import-ownertrust < ownertrust.txt && gpgconf --kill all && rm -f ~/.gnupg/*.lock
 ENTRYPOINT [ "/app/emitter" ]
