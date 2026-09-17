@@ -11,6 +11,18 @@ services:
     env_file:
       - ".env"
 
+  emitter-r2:
+    build:
+      context: "."
+      dockerfile: "Containerfile"
+    image: "emitter:${VERSION}"
+    container_name: "emitter-r2"
+    restart: "unless-stopped"
+    networks:
+      - "emitter"
+    env_file:
+      - ".env.r2"
+
 networks:
   emitter:
     external: true

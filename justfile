@@ -24,17 +24,17 @@ container-prune:
     docker system prune --all --force --volumes
 
 # container network && build && up && _prune
-container-up:
+container-up *services:
     docker network create emitter || true
-    VERSION=${VERSION:-dev} docker compose build --pull --no-cache
-    VERSION=${VERSION:-dev} docker compose up --detach --force-recreate
+    VERSION=${VERSION:-dev} docker compose build --pull --no-cache {{ services }}
+    VERSION=${VERSION:-dev} docker compose up --detach --force-recreate {{ services }}
     @just container-prune
 
 # git pull && checkout; container _up
-container-tag-up tag:
+container-tag-up tag *services:
     git pull
     git checkout {{ tag }}
-    @VERSION={{ tag }} just container-up
+    @VERSION={{ tag }} just container-up {{ services }}
     git checkout -
 
 # container down
