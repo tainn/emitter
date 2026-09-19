@@ -6,7 +6,7 @@ RUN cargo build --release
 
 FROM quay.io/fedora/fedora-minimal:44
 WORKDIR /app
-RUN dnf install -y --nodocs --setopt install_weak_deps=0 git gnupg2 && dnf clean all
+RUN dnf install -y --nodocs --setopt install_weak_deps=0 git gnupg2 tzdata && dnf clean all
 COPY id_ed25519 config /root/.ssh/
 RUN chmod 700 /root/.ssh/ && chmod 600 /root/.ssh/*
 COPY secret.keys.asc public.keys.asc ownertrust.txt /app/
